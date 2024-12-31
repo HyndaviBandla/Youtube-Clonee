@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .container {
+                position: relative;
+                display: inline-block;
+            }
+
+            .pic {
+                width: 300px;
+                object-fit: cover;
+                object-position: bottom;
+                position: relative;
+                border-width: 1px;
+                border-color: black;
+                border-style: solid;
+            }
+
+            .offer {
+                position: absolute;
+                top: 10px;
+                right: 0px;
+                color: white;
+                background-color: black;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-bottom: 7px;
+                padding-top: 7px;
+            }
+
+            .blur {
+                position: absolute;
+                background-color: rgba(255, 255, 255, 0.8);
+                bottom: 0px;
+                left: 0px;
+                right: 0px;
+                height: 100px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .button {
+                background-color: white;
+                border-width: 1px;
+                border-style: solid;
+                border-color: black;
+                padding-left: 15px;
+                padding-right: 15px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                margin-bottom: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <img class="pic" src="thumbnails/51hnM75W18L.SS700.jpg">
+            <div class="offer">20% OFF</div>
+            <div class="blur">
+                <button class="button">Add to Cart</button>
+            </div>
+        </div>
+    </body>
+</html>

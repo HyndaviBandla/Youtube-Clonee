@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .one {
+                display: flex;
+                flex-direction: column;
+                background-color: rgb(27, 27, 27);
+                position: fixed;
+                top: 0px;
+                bottom: 0px;
+                left: 0px;
+                width: 80px;
+                padding-top: 15px;
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .pic {
+                border: none;
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                object-fit: cover;
+                object-position: center;
+                padding-bottom: 10px;
+            }
+
+            .two {
+                display: flex;
+                flex-direction: column;
+                background-color: rgb(63, 63, 63);
+                position: fixed;
+                top: 0px;
+                bottom: 0px;
+                left: 80px;
+                width: 130px;
+                padding-top: 15px;
+                padding-left: 18px;
+                padding-right: 10px;
+                font-family: arial;
+            }
+
+            .heading {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                color: white;
+                padding-bottom: 14px;
+            }
+
+            .info {
+                font-weight: bold;
+                font-size: 16px;
+            }
+
+            .plus {
+                font-size: 18px;
+                color: rgb(154, 153, 153);
+            }
+
+            .hash {
+                color: rgb(154, 153, 153);
+                font-size: 14px;
+                padding-bottom: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="one">
+            <div>
+                <img class="pic" src="thumbnails/channel-1.jpeg">
+            </div>
+            <div>
+                <img class="pic" src="thumbnails/channel-2.jpeg">
+            </div>
+            <div>
+                <img class="pic" src="thumbnails/channel-3.jpeg">
+            </div>
+        </div>
+
+        <div class="two">
+            <div class="heading">
+                <div class="info">INFO</div>
+                <div class="plus">+</div>
+            </div>
+            <div class="hash">
+                # new-videos
+            </div>
+            <div class="hash">
+                # updates
+            </div>
+            <div class="hash">
+                #faq
+            </div>
+        </div>
+    </body>
+</html>

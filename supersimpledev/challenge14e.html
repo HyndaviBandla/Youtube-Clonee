@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .main {
+                display: flex;
+                flex-direction: row;
+                background-color: whitesmoke;
+                justify-content: space-between;
+                padding-right: 25px;
+                padding-left: 25px;
+                position: fixed;
+                top: 0px;
+                left: 0px;
+                right: 0px;
+                height: 50px;
+            }
+
+            .left {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .right {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .picture {
+                border: none;
+                border-radius: 50%;
+                height: 40px;
+                height: 40px;
+                object-fit: cover;
+                object-position: center;
+                padding-right: 10px;
+            }
+
+            .cat {
+                color: black;
+                font-size: 15px;
+                font-family: arial;
+                font-weight: bold;
+            }
+
+            .add-friend {
+                color: white;
+                background-color: rgb(39, 39, 199);
+                border: none;
+                border-radius: 5px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 7px;
+                padding-bottom: 7px;
+                font-size: 12px;
+                margin-right: 10px;
+            }
+
+            .message {
+                border: none;
+                border-radius: 5px;
+                padding-left: 15px;
+                padding-right: 15px;
+                padding-top: 7px;
+                padding-bottom: 7px;
+                font-size: 12px;
+                background-color: rgb(220, 219, 219);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="main">
+            <div class="left">
+                <div>
+                    <img class="picture" src="thumbnails/channel-1.jpeg">
+                </div>
+                <div class="cat">
+                    Oliver Cat
+                </div>
+            </div>
+            <div class="right">
+                <div>
+                    <button class="add-friend">
+                        Add Friend
+                    </button>
+                </div>
+                <div>
+                    <button class="message">
+                        Message
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

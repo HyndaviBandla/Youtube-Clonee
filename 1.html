@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>youtube page</title>
+        <style>
+            .picture {
+                width: 100%;
+                display: block;
+            }
+
+            .two {
+                display: grid;
+                grid-template-columns: 40px 1fr;
+            }
+
+            .pic {
+                border-radius: 50%;
+                width: 31px;
+                height: 31px;
+                object-fit: cover;
+                object-position: center;
+            }
+
+            .heading {
+                font-weight: bold;
+                font-family: arial;
+                margin-bottom: 0px;
+                margin-top: 0px;
+                font-size: 17px;
+            }
+
+            .author {
+                color: grey;
+                font-size: 14px;
+                margin-bottom: 0px;
+                margin-top: 0px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
+
+            .views {
+                color: grey;
+                font-size: 14px;
+                margin-bottom: 0px;
+                margin-top: 0px;
+            }
+
+            .first {
+                display: inline-block;
+                vertical-align: top;
+            }
+
+            .one {
+                margin-bottom: 10px;
+                position: relative;
+            }
+
+            .viedo-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                column-gap: 16px;
+                row-gap: 40px;
+                padding-top: 80px;
+                padding-left: 100px;
+                background-color: rgb(245, 245, 245);
+                padding-right: 23px;
+            }
+
+            .header {
+                height: 60px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                position: fixed;
+                top: 0px;
+                left: 0px;
+                right: 0px;
+                background-color: rgb(255, 255, 255);
+                border-bottom-width: 1px;
+                border-bottom-style: solid;
+                border-bottom-color: rgb(179, 178, 178);
+                z-index: 100;
+            }
+
+            .left-section {
+                display: flex;
+                align-items: center;
+                margin-left: 22px;
+            }
+
+            .middle-section {
+                flex: 1;
+                justify-content: space-between;
+                margin-left: 84px;
+                margin-right: 44px;
+                max-width: 692px;
+                display: flex;
+                align-items: center;
+            }
+
+            .right-section {
+                width: 277px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                margin-right: 28px;
+                flex-shrink: 0;
+            }
+
+            .hamburger {
+                height: 35px;
+                padding-right: 34px;
+            }
+
+            .playbutton {
+                height: 31px;
+            }
+
+            .searchbutton {
+                border-width: 1px;
+                border-color: rgb(175, 173, 173);
+                width: 100px;
+                border-style: solid;
+                height: 52px;
+                box-shadow: inset 0 1px 4px rgb(175, 173, 173);
+                margin-left: -1px;
+                background-color: rgb(243, 240, 240);
+                position: relative;
+                cursor: pointer;
+                height: 42px;
+               margin-left: -10px;
+                border-radius: 1px 50px 50px 1px;
+            }
+
+            .searchbutton div {
+                color: white;
+                background-color: rgb(94, 93, 93);
+                padding-left: 8px;
+                padding-right: 8px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                border-radius: 2px;
+                position: absolute;
+                bottom: -45px;
+                opacity: 0;
+                pointer-events: none;
+               
+            }
+
+            .searchbutton:hover div {
+                opacity: 1;
+            }
+
+            .searchicon {
+                width: 35px;
+               
+            }
+
+            .micbutton {
+                width: 45px;
+                margin-left: 15px;
+                border: none;
+                background-color: rgb(239, 239, 239);
+                border-radius: 50%;
+                height: 45px;
+                position: relative;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .micbutton div, 
+            .uploadbutton div, 
+            .appsbutton div, 
+            .notifications-container .tooltips {
+                color: white;
+                background-color: rgb(88, 88, 88);
+                padding-left: 8px;
+                padding-right: 8px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                border-radius: 2px;
+                white-space: nowrap;
+                position: absolute;
+                bottom: -45px;
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            .micbutton:hover div, 
+            .uploadbutton:hover div, 
+            .appsbutton:hover div, 
+            .notifications-container:hover .tooltips {
+                opacity: 1;
+            }
+
+            .micicon {
+                width: 32px;
+            }
+
+            .search-bar {
+                flex: 1;
+                height: 38px;
+                border-width: 1px;
+                border-color: rgb(175, 173, 173);
+                box-shadow: inset 0 1px 4px rgb(175, 173, 173);
+                border-style: solid;
+                font-size: 27px;
+                width: 0;
+                border-radius: 50px 1px 1px 50px;
+            }
+
+            .search-bar::placeholder {
+                font-family: arial;
+                font-size: 20px;
+                color: rgb(175, 173, 173);
+                padding-left: 23px;
+            }
+
+            .uploadbutton, 
+            .appsbutton {
+                position: relative;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .uploadicon {
+                height: 34px;
+            }
+
+            .appsicon {
+                height: 32px;
+            }
+
+            .notifications-container {
+                position: relative;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .notifications-count {
+                position: absolute;
+                color: white;
+                background-color: rgb(212, 11, 11);
+                border: none;
+                border-radius: 50%;
+                top: 0px;
+                right: 0px;
+                width: 19px;
+                height: 19px;
+                font-size: 11px;
+                font-weight: 500;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .notificationsicon {
+                height: 33px;
+            }
+
+            .mychannelicon {
+                height: 45px;
+                border: none;
+                border-radius: 50%;
+            }
+
+            .side-bar {
+                position: fixed;
+                left: 0px;
+                bottom: 0px;
+                top: 60px;
+                width: 80px;
+                background-color: rgb(255, 255, 255);
+                display: flex;
+                flex-direction: column;
+                padding-top: 6px;
+                z-index: 200;
+            }
+
+            .video-time {
+                position: absolute;
+                color: white;
+                background-color: black;
+                padding-left: 3px;
+                padding-right: 3px;
+                padding-top: 3px;
+                padding-bottom: 3px;
+                bottom: 5px;
+                right: 5px;
+                font-size: 13px;
+                font-weight: 500;
+            }
+
+            .sidebar-link {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 80px;
+                width: 80px;
+                cursor: pointer;
+                min-height: 80px;
+            }
+
+            .sidebar-link:hover {
+                background-color: lightgrey;
+            }
+
+            .sidebar-link img {
+                width: 23px;
+                padding-bottom: 5px;
+            }
+
+            .sidebar-link div {
+                font-family: arial;
+                font-size: 11px;
+            }
+
+            .profile {
+                position: relative;
+            }
+
+            .tt {
+                position: absolute;
+                background-color: white;
+                border-radius: 5px;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                box-shadow: 0px 0px 3px 3px grey;
+                padding-top: 15px;
+                padding-bottom: 17px;
+                padding-left: 15px;
+                padding-right: 25px;
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            .profile:hover .tt {
+                opacity: 1;
+            }
+
+            .mini-profile {
+                border-radius: 50%;
+                width: 31px;
+                height: 31px;
+                object-fit: cover;
+                object-position: center;
+                padding-right: 15px;
+            }
+
+            .hie {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .up {
+                color: black;
+                font-weight: bold;
+                font-size: 19px;
+                margin-bottom: 0px;
+                margin-top: 0px;
+            }
+
+            .down {
+                font-size: 19px;
+                color: rgb(100, 99, 99);
+                margin-bottom: 0px;
+                margin-top: 0px;
+                white-space: nowrap;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <div class="left-section">
+                <img class="hamburger" src="icons/hamburger-menu.svg">
+                <img class="playbutton" src="icons/youtube-logo.svg">
+            </div>
+            <div class="middle-section"  >
+                <input class="search-bar" type="text" placeholder="Search">
+                <button class="searchbutton">
+                    <img class="searchicon" src="icons/search.svg">
+                    <div>Search</div>
+                </button>
+                <button class="micbutton">
+                    <img class="micicon" src="icons/voice-search-icon.svg">
+                    <div>Search with your voice</div>
+                </button>
+            </div>
+            <div class="right-section">
+                <div class="uploadbutton">
+                    <img class="uploadicon" src="icons/upload.svg">
+                    <div>create</div>
+                </div>
+                <div class="appsbutton">
+                    <img class="appsicon" src="icons/youtube-apps.svg">
+                    <div>YouTube apps</div>
+                </div>
+                <div class="notifications-container">
+                    <img class="notificationsicon" src="icons/notifications.svg">
+                    <div class="notifications-count">3</div>
+                    <div class="tooltips">Notifications</div>
+                </div>
+                <img class="mychannelicon" src="thumbnails/Hyndavi_GATE.jpg">
+            </div>
+        </div>
+
+        <div class="side-bar">
+            <div class="sidebar-link">
+                <img src="icons/home.svg">
+                <div>Home</div>
+            </div>
+            <div class="sidebar-link">
+                <img src="icons/explore.svg">
+                <div>Explore</div>
+            </div>
+            <div class="sidebar-link">
+                <img src="icons/subscriptions.svg">
+                <div>Subscriptions</div>
+            </div>
+            <div class="sidebar-link">
+                <img src="icons/originals.svg">
+                <div>Originals</div>
+            </div>
+            <div class="sidebar-link">
+                <img src="icons/youtube-music.svg">
+                <div>YouTube Music</div>
+            </div>
+            <div class="sidebar-link">
+                <img src="icons/library.svg">
+                <div>Library</div>
+            </div>
+        </div>
+
+        <div class="viedo-grid">
+            <div class="first">
+                <div class="one">
+                    <a href="https://youtu.be/kVkF73F7qSE" target="_blank">
+                        <img class="picture" src="thumbnails/prasad.webp">
+                    </a>
+                    <div class="video-time">14:20</div>
+                </div>
+    
+                <div class="two">
+                    <div class="profile">
+                        <a href="https://youtu.be/kVkF73F7qSE" target="_blank">
+                            <img class="pic" src="icons/daddy.jpg">
+                        </a>
+                        <div class="tt">
+                            <div>
+                                <img class="mini-profile" src="icons/daddy.jpg">
+                            </div>
+                            <div class="hie">
+                                <p class="up">Prasad rao</p>
+                                <p class="down">10k subscribers</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <p class="heading">
+                            Temple Of The Living God vzm telugu christian...
+                        </p>
+    
+                        <p class="author">
+                            prasad rao
+                        </p>
+    
+                        <p class="views">
+                            85 views &#183; 5 days ago
+                        </p>
+                    </div>
+                </div>
+            </div>
+    
+    
+            <div class="first">
+                <div class="one">
+                    <a href="https://www.youtube.com/watch?v=mP0RAo9SKZk" target="_blank">
+                        <img class="picture" src="thumbnails/thumbnail-2.webp">
+                    </a>
+                    <div class="video-time">14:20</div>
+                </div>
+    
+                <div class="two">
+                    <div class="profile">
+                        <a href="https://www.youtube.com/watch?v=mP0RAo9SKZk" target="_blank">
+                            <img class="pic" src="thumbnails/channel-2.jpeg">
+                        </a>
+                        <div class="tt">
+                            <div>
+                                <img class="mini-profile" src="thumbnails/channel-2.jpeg">
+                            </div>
+                            <div class="hie">
+                                <p class="up">Markipiler</p>
+                                <p class="down">30M subscribers</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="info">
+                        <p class="heading">
+                            Try Not To Laugh Challenge #9
+                        </p>
+                
+                        <p class="author">
+                            Markiplier
+                        </p>
+                
+                        <p class="views">
+                            19M views &#183; 4 years ago
+                        </p>
+                    </div>
+                </div>
+            </div>
+    
+    
+            <div class="first">
+                <div class="one">
+                    <a href="https://www.youtube.com/watch?v=FgjPQQeTh1w" target="_blank">
+                        <img class="picture" src="thumbnails/thumbnail-3.webp">
+                    </a>
+                    <div class="video-time">14:20</div>
+                </div>
+    
+                <div class="two">
+                    <div class="profile">
+                        <a href="https://www.youtube.com/watch?v=FgjPQQeTh1w" target="_blank">
+                            <img class="pic" src="thumbnails/channel-3.jpeg">
+                        </a>
+                        <div class="tt">
+                            <div>
+                                <img class="mini-profile" src="thumbnails/channel-3.jpeg">
+                            </div>
+                            <div class="hie">
+                                <p class="up">SSSniper Wolf</p>
+                                <p class="down">2.4k subscribers</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <p class="heading">
+                            Crazy Tik Toks Taken Moments Before DISASTER
+                        </p>
+    
+                        <p class="author">
+                            SSSniperWolf
+                        </p>
+    
+                        <p class="views">
+                            12M views &#183; 1 year ago
+                        </p>
+                    </div>
+                </div>
+            </div>
+    
+    
+            <div class="first">
+                <div class="one">
+                    <a href="https://www.youtube.com/watch?v=094y1Z2wpJg" target="_blank">
+                        <img class="picture" src="thumbnails/thumbnail-4.webp">
+                    </a>
+                    <div class="video-time">14:20</div>
+                </div>
+    
+                <div class="two">
+                    <div class="profile">
+                        <a href="https://www.youtube.com/watch?v=094y1Z2wpJg" target="_blank">
+                            <img class="pic" src="thumbnails/channel-4.jpeg">
+                        </a>
+                        <div class="tt">
+                            <div>
+                                <img class="mini-profile" src="thumbnails/channel-4.jpeg">
+                            </div>
+                            <div class="hie">
+                                <p class="up">Veritasium</p>
+                                <p class="down">4.9M subscribers</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="info">
+                        <p class="heading">
+                            The Simplest Math Problem No One Can Solve - Collatz Conjecture
+                        </p>
+                
+                        <p class="author">
+                            Veritasium
+                        </p>
+                
+                        <p class="views">
+                            18M views &#183; 4 months ago
+                        </p>
+                    </div>
+                </div>
+            </div>
+    
+    
+            <div class="first">
+                <div class="one">
+                    <a href="https://www.youtube.com/watch?v=86CQq3pKSUw" target="_blank">
+                        <img class="picture" src="thumbnails/thumbnail-5.webp">
+                    </a>
+                    <div class="video-time">14:20</div>
+                </div>
+    
+                <div class="two">
+                    <div class="profile">
+                        <a href="https://www.youtube.com/watch?v=86CQq3pKSUw" target="_blank">
+                            <img class="pic" src="thumbnails/channel-5.jpeg">
+                        </a>
+                        <div class="tt">
+                            <div>
+                                <img class="mini-profile" src="thumbnails/channel-5.jpeg">
+                            </div>
+                            <div class="hie">
+                                <p class="up">CS Dojo</p>
+                                <p class="down">39k subscribers</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <p class="heading">
+                            Kadane's Algorithm to Maximum Sum Subarray Problem
+                        </p>
+    
+                        <p class="author">
+                            CS Dojo
+                        </p>
+    
+                        <p class="views">
+                            519k views &#183;  5 years ago
+                        </p>
+                    </div>
+                </div>
+            </div>
+    
+    
+            <div class="first">
+                <div class="one">
+                    <a href="https://www.youtube.com/watch?v=yXWw0_UfSFg" target="_blank">
+                        <img class="picture" src="thumbnails/thumbnail-6.webp">
+                    </a>
+                    <div class="video-time">14:20</div>
+                </div>
+    
+                <div class="two">
+                    <div class="profile">
+                        <a href="https://www.youtube.com/watch?v=yXWw0_UfSFg" target="_blank">
+                            <img class="pic" src="thumbnails/channel-6.jpeg">
+                        </a>
+                        <div class="tt">
+                            <div>
+                                <img class="mini-profile" src="thumbnails/channel-6.jpeg">
+                            </div>
+                            <div class="hie">
+                                <p class="up">MrBeast</p>
+                                <p class="down">1.2M subscribers</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="info">
+                        <p class="heading">
+                            Anything You Can Fit In The Circle I'll Pay For
+                        </p>
+                
+                        <p class="author">
+                            MrBeast
+                        </p>
+                
+                        <p class="views">
+                            141M views &#183; 1 year ago
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="first">
+                <div class="one">
+                    <a href="https://www.youtube.com/watch?v=jVdRvMVAY88" target="_blank">
+                        <img class="picture" src="thumbnails/hq720.webp">
+                    </a>
+                    <div class="video-time">55:02</div>
+                </div>
+    
+                <div class="two">
+                    <div class="profile">
+                        <a href="https://www.youtube.com/watch?v=jVdRvMVAY88" target="_blank">
+                            <img class="pic" src="thumbnails/unnamed.jpg">
+                        </a>
+                        <div class="tt">
+                            <div>
+                                <img class="mini-profile" src="thumbnails/unnamed.jpg">
+                            </div>
+                            <div class="hie">
+                                <p class="up">Mr Bean</p>
+                                <p class="down">47M subscribers</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <p class="heading">
+                            Stinky Bean! Mr Bean Animated season 3
+                        </p>
+    
+                        <p class="author">
+                            Mr Bean
+                        </p>
+    
+                        <p class="views">
+                            15k views &#183; 2 years ago
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="first">
+                <div class="one">
+                    <a href="https://www.youtube.com/watch?v=EerdGm-ehJQ&t=1206s" target="_blank">
+                        <img class="picture" src="thumbnails/thumbnail-8.webp">
+                    </a>
+                    <div class="video-time">22:15:57</div>
+                </div>
+    
+                <div class="two">
+                    <div class="profile">
+                        <a href="https://www.youtube.com/watch?v=EerdGm-ehJQ&t=1206s" target="_blank">
+                            <img class="pic" src="thumbnails/my-channel.jpeg">
+                        </a>
+                        <div class="tt">
+                            <div>
+                                <img class="mini-profile" src="thumbnails/my-channel.jpeg">
+                            </div>
+                            <div class="hie">
+                                <p class="up">SuperSimpleDev</p>
+                                <p class="down">5.9M subscribers</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <p class="heading">
+                            JavaScript Tutorial Full Course - Beginner to Pro
+                        </p>
+    
+                        <p class="author">
+                            SuperSimpleDev
+                        </p>
+    
+                        <p class="views">
+                            585k views &#183; 1 month ago
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="first">
+                <div class="one">
+                    <a href="https://www.youtube.com/watch?v=PtUfgpzDVuQ" target="_blank">
+                        <img class="picture" src="thumbnails/thumbnail-9.webp">
+                    </a>
+                    <div class="video-time">40:16</div>
+                </div>
+    
+                <div class="two">
+                    <div class="profile">
+                        <a href="https://www.youtube.com/watch?v=PtUfgpzDVuQ" target="_blank">
+                            <img class="pic" src="thumbnails/channel-9.jpeg">
+                        </a>
+                        <div class="tt">
+                            <div>
+                                <img class="mini-profile" src="thumbnails/channel-9.jpeg">
+                            </div>
+                            <div class="hie">
+                                <p class="up">Sony LIV Telugu</p>
+                                <p class="down">32.7M subscribers</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <p class="heading">
+                            CID - Ep 433 - Full Episode
+                        </p>
+    
+                        <p class="author">
+                            Sony LIV Telugu
+                        </p>
+    
+                        <p class="views">
+                            137k views &#183; 2 days ago
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="first">
+                <div class="one">
+                    <a href="https://www.youtube.com/watch?v=VYbj2GAZ_58" target="_blank">
+                        <img class="picture" src="thumbnails/thumbnail-10.webp">
+                    </a>
+                    <div class="video-time">0:41</div>
+                </div>
+    
+                <div class="two">
+                    <div class="profile">
+                        <a href="https://www.youtube.com/watch?v=VYbj2GAZ_58" target="_blank">
+                            <img class="pic" src="thumbnails/channel-10.jpeg">
+                        </a>
+                        <div class="tt">
+                            <div>
+                                <img class="mini-profile" src="thumbnails/channel-10.jpeg">
+                            </div>
+                            <div class="hie">
+                                <p class="up">Vinay Shanmukh</p>
+                                <p class="down">3.3M subscribers</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <p class="heading">
+                            Vidipothe Teaser Deepthi sunaina Vinay Shanmukh
+                        </p>
+    
+                        <p class="author">
+                            Vinay Shanmukh
+                        </p>
+    
+                        <p class="views">
+                            151k views &#183;  8 days ago
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="first">
+                <div class="one">
+                    <a href="https://www.youtube.com/watch?v=Vw6utYElVFg" target="_blank">
+                        <img class="picture" src="thumbnails/thumbnail-11.webp">
+                    </a>
+                    <div class="video-time">8:36</div>
+                </div>
+    
+                <div class="two">
+                    <div class="profile">
+                        <a href="https://www.youtube.com/watch?v=Vw6utYElVFg" target="_blank">
+                            <img class="pic" src="thumbnails/channel-11.jpeg">
+                        </a>
+                        <div class="tt">
+                            <div>
+                                <img class="mini-profile" src="thumbnails/channel-11.jpeg">
+                            </div>
+                            <div class="hie">
+                                <p class="up">Brown Tech</p>
+                                <p class="down">94.3k subscribers</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <p class="heading">
+                            A Day in the life of a Microsoft Software Engineer
+                        </p>
+    
+                        <p class="author">
+                            Brown Tech Daddy
+                        </p>
+    
+                        <p class="views">
+                            4.8M views &#183; 1 year ago
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="first">
+                <div class="one">
+                    <a href="https://www.youtube.com/watch?v=BKgNJ6jMp_M" target="_blank">
+                        <img class="picture" src="thumbnails/thumbnail-12.webp">
+                    </a>
+                    <div class="video-time">5:23</div>
+                </div>
+    
+                <div class="two">
+                    <div class="profile">
+                        <a href="https://www.youtube.com/watch?v=BKgNJ6jMp_M" target="_blank">
+                            <img class="pic" src="thumbnails/channel-12.jpeg">
+                        </a>
+                        <div class="tt">
+                            <div>
+                                <img class="mini-profile" src="thumbnails/channel-12.jpeg">
+                            </div>
+                            <div class="hie">
+                                <p class="up">Kalvium</p>
+                                <p class="down">54k subscribers</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <p class="heading">
+                            What will I learn in B.tech Computer Science Engineering
+                        </p>
+    
+                        <p class="author">
+                            Kalvium
+                        </p>
+    
+                        <p class="views">
+                            57k views &#183;  1 month ago
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
